@@ -13,8 +13,6 @@ const categorias = {
 const btnGuardar = document.querySelector('#guardar-cliente');
 btnGuardar.addEventListener('click', guardarCliente);
 
-
-
 //FUNCIONES 
 
 function guardarCliente() {
@@ -96,7 +94,10 @@ function mostrarPlatillos(platillos) {
 
         //Funcion que detecta la cantidad y el platillo que se esta agregando
 
-        inputCantidad.onchange = agregarPlatillo(platillo.id);
+        inputCantidad.onchange = function() {
+            const cantidad = parseInt(inputCantidad.value);
+            agregarPlatillo({...platillo, cantidad});
+        }
 
         const agregar = document.createElement('DIV');
         agregar.classList.add('col-md-2');
@@ -112,6 +113,6 @@ function mostrarPlatillos(platillos) {
     })
 }
 
-function agregarPlatillo(id) {
-    console.log('Desde agregar platillo')
+function agregarPlatillo(producto) {
+    console.log(producto);
 }
